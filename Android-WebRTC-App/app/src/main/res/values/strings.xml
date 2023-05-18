@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">webRtc</string>
+    
+    <string name="join_now">加入房間</string>
+    <string name="connected">已連線</string>
+    <string name="disconnected">已斷線</string>
+
+    <string name="toast_ask_rtc_permission">請開啟相關權限</string>
+
+    <string name="status_connecting">連線中\.\.\.</string>
+    <string name="status_connected">連線成功</string>
+    <string name="status_waiting">等待中\.\.\.</string>
+    <string name="status_finished">完成</string>
 </resources>

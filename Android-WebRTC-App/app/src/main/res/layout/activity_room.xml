@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RoomActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/status_waiting"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/localRenderer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="9:16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvState"
+        app:layout_constraintVertical_bias=".05"
+        app:layout_constraintWidth_max="100dp"
+        app:layout_constraintWidth_percent=".3" />
+
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/remoteRenderer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:translationZ="-10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgAudio"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@color/white_BFFFFFFF"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/outline_mic_none_24"
+        android:tint="@color/white"
+        app:contentPadding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/imgCallEnd"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgCallEnd"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@color/red"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/baseline_call_end_24"
+        android:tint="@color/white"
+        app:contentPadding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/imgVideo"
+        app:layout_constraintStart_toEndOf="@+id/imgAudio" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgVideo"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white_BFFFFFFF"
+        android:src="@drawable/outline_videocam_24"
+        android:tint="@color/white"
+        app:contentPadding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgCallEnd" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
