@@ -38,7 +38,7 @@ class P2PVideoCall(
         const val TAG = "P2PVideoCall"
 
         // 建立單一執行緒
-        private val scope = CoroutineScope(Dispatchers.Default)
+        private val scope = CoroutineScope(Dispatchers.Main)
 
         // 連線 WebRTC 伺服器
         fun connect(

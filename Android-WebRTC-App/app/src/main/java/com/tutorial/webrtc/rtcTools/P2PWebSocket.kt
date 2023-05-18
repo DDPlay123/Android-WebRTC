@@ -78,11 +78,19 @@ class P2PWebSocket : WebSocketListener() {
                 else -> null
             }
         Method.logE(TAG, "Receive message: $message")
-        message?.let(messageHandler)
+        message?.let { messageHandler.invoke(it) }
     }
 
+    // 發送 OfferAnswer 訊息
+    fun sendOfferAnswerMessage(description: String) =
+        sendToServer(P2PMessage.OfferAnswerMessage(description))
+
+    // 發送 Candidate 訊息
+    fun sendCandidate(label: Int, id: String, candidate: String) =
+        sendToServer(P2PMessage.CandidateMessage(label, id, candidate))
+
     // 發送訊息至 Server
-    fun sendToServer(message: P2PMessage) {
+    private fun sendToServer(message: P2PMessage) {
         with (JSONObject()) {
             put("type", message.messageType)
             when (message) {
@@ -102,16 +110,8 @@ class P2PWebSocket : WebSocketListener() {
                 }
             }
 
-            Method.logE(TAG, "Send to server: $this")
+            Method.logE(TAG, "Send to server: ${this@with}")
             webSocket?.send(toString())
         }
     }
-
-    // 發送 OfferAnswer 訊息
-    fun sendOfferAnswerMessage(description: String) =
-        sendToServer(P2PMessage.OfferAnswerMessage(description))
-
-    // 發送 Candidate 訊息
-    fun sendCandidate(label: Int, id: String, candidate: String) =
-        sendToServer(P2PMessage.CandidateMessage(label, id, candidate))
 }
